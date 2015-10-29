@@ -47,10 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Native.cs">
+      <Link>SDK\Native.cs</Link>
+    </Compile>
     <Compile Include="..\SDK.cs">
       <Link>SDK\SDK.cs</Link>
     </Compile>
-    <Compile Include="Syscalls.cs" />
+    <Compile Include="uix86.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

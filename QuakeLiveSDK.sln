@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cgamex86", "cgamex86\cgamex
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SDK", "SDK", "{ECF23804-A974-42B6-B72D-05753B47A009}"
 	ProjectSection(SolutionItems) = preProject
+		Native.cs = Native.cs
 		SDK.cs = SDK.cs
 	EndProjectSection
 EndProject

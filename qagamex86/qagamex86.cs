@@ -7,10 +7,10 @@ using System.Runtime.InteropServices;
 using RGiesecke.DllExport;
 
 namespace qagamex86 {
-	public class Syscalls {
+	class qagamex86 {
 		[DllExport("dllEntry", CallingConvention = CallingConvention.Cdecl)]
-		public static void dllEntry(IntPtr Ret, IntPtr SyscallTable, IntPtr C) {
-			
+		public static void dllEntry(ReturnInfo RetInfo, DispatchTable SyscallTable, IntPtr Unknown) {
+
 		}
 	}
 }
