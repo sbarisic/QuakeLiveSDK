@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\HookHandle.cs">
+      <Link>SDK\HookHandle.cs</Link>
+    </Compile>
+    <Compile Include="..\MemoryManagement.cs">
+      <Link>SDK\MemoryManagement.cs</Link>
+    </Compile>
     <Compile Include="..\Native.cs">
       <Link>SDK\Native.cs</Link>
     </Compile>

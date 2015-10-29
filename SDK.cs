@@ -112,8 +112,8 @@ enum Syscalls : int {
 #elif qagamex86
 	
 #elif uix86
-	UI_ERROR,
 	UI_PRINT,
+	UI_ERROR,
 	UI_MILLISECONDS,
 	UI_CVAR_SET,
 	UI_CVAR_VARIABLEVALUE,
@@ -246,11 +246,19 @@ unsafe struct DispatchTable {
 unsafe struct ReturnInfo {
 	public IntPtr ReturnInfoPtr;
 
+	public ReturnInfo(int Size) {
+		ReturnInfoPtr = IntPtr.Zero;
+		AllocateDispatchTable(Size);
+	}
+
 	public DispatchTable GetDispatchTable() {
 		return *(DispatchTable*)ReturnInfoPtr.ToPointer();
 	}
 
 	public void AllocateDispatchTable(int Size = 1) {
+		/*if (*(IntPtr*)ReturnInfoPtr.ToPointer() != IntPtr.Zero)
+			Marshal.FreeHGlobal(*(IntPtr*)ReturnInfoPtr.ToPointer());*/
+
 		(*(IntPtr*)ReturnInfoPtr.ToPointer()) = Marshal.AllocHGlobal(Size * sizeof(int));
 	}
 }
