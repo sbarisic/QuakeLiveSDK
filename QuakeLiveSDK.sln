@@ -15,6 +15,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SDK", "SDK", "{ECF23804-A97
 		SDK.cs = SDK.cs
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quakelive_launcher", "quakelive_bollocks\quakelive_launcher.csproj", "{13A3B924-9D13-422A-B6F4-EE7B14C1BBE0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{51F8841B-E39C-4B31-9FD8-3374C101C74E} = {51F8841B-E39C-4B31-9FD8-3374C101C74E}
+		{B0D8944D-B4CD-4835-BD26-49E2C7934D97} = {B0D8944D-B4CD-4835-BD26-49E2C7934D97}
+		{4BF00B6C-2395-4368-A31C-239C4A459A7B} = {4BF00B6C-2395-4368-A31C-239C4A459A7B}
+		{1FF0D4D6-A612-449C-9331-013B7D810E9E} = {1FF0D4D6-A612-449C-9331-013B7D810E9E}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hackfest", "Hackfest\hackfest.csproj", "{4BF00B6C-2395-4368-A31C-239C4A459A7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +43,14 @@ Global
 		{51F8841B-E39C-4B31-9FD8-3374C101C74E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51F8841B-E39C-4B31-9FD8-3374C101C74E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51F8841B-E39C-4B31-9FD8-3374C101C74E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13A3B924-9D13-422A-B6F4-EE7B14C1BBE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13A3B924-9D13-422A-B6F4-EE7B14C1BBE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13A3B924-9D13-422A-B6F4-EE7B14C1BBE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13A3B924-9D13-422A-B6F4-EE7B14C1BBE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BF00B6C-2395-4368-A31C-239C4A459A7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BF00B6C-2395-4368-A31C-239C4A459A7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BF00B6C-2395-4368-A31C-239C4A459A7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BF00B6C-2395-4368-A31C-239C4A459A7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

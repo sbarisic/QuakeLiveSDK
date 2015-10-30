@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1FF0D4D6-A612-449C-9331-013B7D810E9E}</ProjectGuid>
+    <ProjectGuid>{4BF00B6C-2395-4368-A31C-239C4A459A7B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>uix86</RootNamespace>
-    <AssemblyName>uix86</AssemblyName>
+    <RootNamespace>hackfest</RootNamespace>
+    <AssemblyName>hackfest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -16,8 +16,8 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Program Files\DarkSteam\client\steamapps\common\Quake Live\cliq3\bin\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;uix86</DefineConstants>
+    <OutputPath>..\..\..\Program Files\DarkSteam\client\steamapps\common\Quake Live\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -26,14 +26,18 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\Program Files\DarkSteam\client\steamapps\common\Quake Live\cliq3\bin\</OutputPath>
-    <DefineConstants>TRACE;uix86</DefineConstants>
+    <OutputPath>..\..\..\Program Files\DarkSteam\client\steamapps\common\Quake Live\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Hackery, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Hackery\bin\Hackery.dll</HintPath>
+    </Reference>
     <Reference Include="RGiesecke.DllExport.Metadata">
       <HintPath>..\packages\UnmanagedExports.1.2.7\lib\net\RGiesecke.DllExport.Metadata.dll</HintPath>
       <Private>False</Private>
@@ -47,25 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\HookHandle.cs">
-      <Link>SDK\HookHandle.cs</Link>
-    </Compile>
-    <Compile Include="..\MemoryManagement.cs">
-      <Link>SDK\MemoryManagement.cs</Link>
-    </Compile>
-    <Compile Include="..\Native.cs">
-      <Link>SDK\Native.cs</Link>
-    </Compile>
-    <Compile Include="..\SDK.cs">
-      <Link>SDK\SDK.cs</Link>
-    </Compile>
-    <Compile Include="uix86.cs" />
+    <Compile Include="Hackfest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="../packages/UnmanagedExports.1.2.7/tools/RGiesecke.DllExport.targets" Condition="Exists('../packages/UnmanagedExports.1.2.7/tools/RGiesecke.DllExport.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
