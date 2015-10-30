@@ -9,13 +9,6 @@ using Hackery;
 
 namespace quakelive_launcher {
 	class Program {
-		/*static void Print(string Txt, ConsoleColor Fg = ConsoleColor.Gray) {
-			ConsoleColor Old = Console.ForegroundColor;
-			Console.ForegroundColor = Fg;
-			Console.WriteLine(Txt);
-			Console.ForegroundColor = Old;
-		}*/
-
 		static void Main(string[] args) {
 			if (args.Length == 0)
 				args = new[] { "cliq3" };

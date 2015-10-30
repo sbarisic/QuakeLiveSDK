@@ -51,8 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CVar.cs" />
     <Compile Include="Hackfest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SDK.cs" />
+    <Compile Include="Syscalls.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

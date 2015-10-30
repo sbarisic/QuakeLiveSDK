@@ -7,14 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "qagamex86", "qagamex86\qaga
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cgamex86", "cgamex86\cgamex86.csproj", "{51F8841B-E39C-4B31-9FD8-3374C101C74E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SDK", "SDK", "{ECF23804-A974-42B6-B72D-05753B47A009}"
-	ProjectSection(SolutionItems) = preProject
-		HookHandle.cs = HookHandle.cs
-		MemoryManagement.cs = MemoryManagement.cs
-		Native.cs = Native.cs
-		SDK.cs = SDK.cs
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quakelive_launcher", "quakelive_bollocks\quakelive_launcher.csproj", "{13A3B924-9D13-422A-B6F4-EE7B14C1BBE0}"
 	ProjectSection(ProjectDependencies) = postProject
 		{51F8841B-E39C-4B31-9FD8-3374C101C74E} = {51F8841B-E39C-4B31-9FD8-3374C101C74E}

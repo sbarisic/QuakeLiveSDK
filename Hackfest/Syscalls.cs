@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-enum Syscalls : int {
-#if cgamex86
-	PRINT,
-	ERROR,
+public enum Syscalls_CG : int {
+	CG_PRINT,
+	CG_ERROR,
 	CG_MILLISECONDS,
 	CG_CVAR_REGISTER,
 	CG_CVAR_UPDATE,
@@ -96,26 +97,13 @@ enum Syscalls : int {
 	CG_R_INPVS,
 
 	CG_FS_SEEK,
+}
 
-	CG_MEMSET = 100,
-	CG_MEMCPY,
-	CG_STRNCPY,
-	CG_SIN,
-	CG_COS,
-	CG_ATAN2,
-	CG_SQRT,
-	CG_FLOOR,
-	CG_CEIL,
-	CG_TESTPRINTINT,
-	CG_TESTPRINTFLOAT,
-	CG_ACOS
-#elif qagamex86
-	//============== general Quake services ==================
-
-	PRINT,		// ( const char *string );
+public enum Syscalls_G : int {
+	G_PRINT,		// ( const char *string );
 	// print message on the local console
 
-	ERROR,		// ( const char *string );
+	G_ERROR,		// ( const char *string );
 	// abort the game
 
 	G_MILLISECONDS,	// ( void );
@@ -126,18 +114,14 @@ enum Syscalls : int {
 	// console variable interaction
 	G_CVAR_REGISTER,	// ( vmCvar_t *vmCvar, const char *varName, const char *defaultValue, int flags );
 	G_CVAR_UPDATE,	// ( vmCvar_t *vmCvar );
-	G_CVAR_SET,		// ( const char *var_name, const char *value );
+	G_CVAR_SET = 15,		// ( const char *var_name, const char *value );
 	G_CVAR_VARIABLE_INTEGER_VALUE,	// ( const char *var_name );
-
 	G_CVAR_VARIABLE_STRING_BUFFER,	// ( const char *var_name, char *buffer, int bufsize );
 
 	G_ARGC,			// ( void );
 	// ClientCommand and ServerCommand parameter access
 
 	G_ARGV,			// ( int n, char *buffer, int bufferLength );
-
-	G_ARGS,
-	G_CMDS,
 
 	G_FS_FOPEN_FILE,	// ( const char *qpath, fileHandle_t *file, fsMode_t mode );
 	G_FS_READ,		// ( void *buffer, int len, fileHandle_t f );
@@ -234,7 +218,7 @@ enum Syscalls : int {
 
 	G_TRACECAPSULE,	// ( trace_t *results, const vec3_t start, const vec3_t mins, const vec3_t maxs, const vec3_t end, int passEntityNum, int contentmask );
 	G_ENTITY_CONTACTCAPSULE,	// ( const vec3_t mins, const vec3_t maxs, const gentity_t *ent );
-	
+
 	// 1.32
 	G_FS_SEEK,
 
@@ -396,105 +380,27 @@ enum Syscalls : int {
 	BOTLIB_PC_FREE_SOURCE,
 	BOTLIB_PC_READ_TOKEN,
 	BOTLIB_PC_SOURCE_FILE_AND_LINE
-#elif uix86
-	PRINT,
-	ERROR,
-	UI_MILLISECONDS,
-	UI_CVAR_SET,
-	UI_CVAR_VARIABLEVALUE,
-	UI_CVAR_VARIABLESTRINGBUFFER,
-	UI_CVAR_SETVALUE,
-	UI_CVAR_RESET,
-	UI_CVAR_CREATE,
-	UI_CVAR_INFOSTRINGBUFFER,
-	UI_ARGC,
-	UI_ARGV,
-	UI_CMD_EXECUTETEXT,
-	UI_FS_FOPENFILE,
-	UI_FS_READ,
-	UI_FS_WRITE,
-	UI_FS_FCLOSEFILE,
-	UI_FS_GETFILELIST,
-	UI_R_REGISTERMODEL,
-	UI_R_REGISTERSKIN,
-	UI_R_REGISTERSHADERNOMIP,
-	UI_R_CLEARSCENE,
-	UI_R_ADDREFENTITYTOSCENE,
-	UI_R_ADDPOLYTOSCENE,
-	UI_R_ADDLIGHTTOSCENE,
-	UI_R_RENDERSCENE,
-	UI_R_SETCOLOR,
-	UI_R_DRAWSTRETCHPIC,
-	UI_UPDATESCREEN,
-	UI_CM_LERPTAG,
-	UI_CM_LOADMODEL,
-	UI_S_REGISTERSOUND,
-	UI_S_STARTLOCALSOUND,
-	UI_KEY_KEYNUMTOSTRINGBUF,
-	UI_KEY_GETBINDINGBUF,
-	UI_KEY_SETBINDING,
-	UI_KEY_ISDOWN,
-	UI_KEY_GETOVERSTRIKEMODE,
-	UI_KEY_SETOVERSTRIKEMODE,
-	UI_KEY_CLEARSTATES,
-	UI_KEY_GETCATCHER,
-	UI_KEY_SETCATCHER,
-	UI_GETCLIPBOARDDATA,
-	UI_GETGLCONFIG,
-	UI_GETCLIENTSTATE,
-	UI_GETCONFIGSTRING,
-	UI_LAN_GETPINGQUEUECOUNT,
-	UI_LAN_CLEARPING,
-	UI_LAN_GETPING,
-	UI_LAN_GETPINGINFO,
-	UI_CVAR_REGISTER,
-	UI_CVAR_UPDATE,
-	UI_MEMORY_REMAINING,
-	UI_GET_CDKEY,
-	UI_SET_CDKEY,
-	UI_R_REGISTERFONT,
-	UI_R_MODELBOUNDS,
-	UI_PC_ADD_GLOBAL_DEFINE,
-	UI_PC_LOAD_SOURCE,
-	UI_PC_FREE_SOURCE,
-	UI_PC_READ_TOKEN,
-	UI_PC_SOURCE_FILE_AND_LINE,
-	UI_S_STOPBACKGROUNDTRACK,
-	UI_S_STARTBACKGROUNDTRACK,
-	UI_REAL_TIME,
-	UI_LAN_GETSERVERCOUNT,
-	UI_LAN_GETSERVERADDRESSSTRING,
-	UI_LAN_GETSERVERINFO,
-	UI_LAN_MARKSERVERVISIBLE,
-	UI_LAN_UPDATEVISIBLEPINGS,
-	UI_LAN_RESETPINGS,
-	UI_LAN_LOADCACHEDSERVERS,
-	UI_LAN_SAVECACHEDSERVERS,
-	UI_LAN_ADDSERVER,
-	UI_LAN_REMOVESERVER,
-	UI_CIN_PLAYCINEMATIC,
-	UI_CIN_STOPCINEMATIC,
-	UI_CIN_RUNCINEMATIC,
-	UI_CIN_DRAWCINEMATIC,
-	UI_CIN_SETEXTENTS,
-	UI_R_REMAP_SHADER,
-	UI_VERIFY_CDKEY,
-	UI_LAN_SERVERSTATUS,
-	UI_LAN_GETSERVERPING,
-	UI_LAN_SERVERISVISIBLE,
-	UI_LAN_COMPARESERVERS,
-	// 1.32
-	UI_FS_SEEK,
-	UI_SET_PBCLSTATUS,
+}
 
-	UI_MEMSET = 100,
-	UI_MEMCPY,
-	UI_STRNCPY,
-	UI_SIN,
-	UI_COS,
-	UI_ATAN2,
-	UI_SQRT,
-	UI_FLOOR,
-	UI_CEIL
-#endif
+public enum Syscalls : int {
+	G_PRINT = 0,
+	G_ERROR = 1,
+
+	G_CVAR_SET = 15,
+
+	CG_S_STARTSOUND = 0x25,
+	CG_S_STARTLOCALSOUND = 0x26,
+	CG_S_REGISTERSOUND = 0x2C,
+	CG_R_REGISTERSHADER = 0x32,
+	CG_R_ADDREFENTITYTOSCENE = 0x45,
+	CG_R_ADDPOLYTOSCENE = 0x46,
+	CG_R_RENDERSCENE = 0x4A,
+	CG_R_SETCOLOR = 0x4C,
+	CG_R_DRAWSTRETCHPIC = 0x4D,
+	CG_GETCURRENTCMDNUMBER = 0x56,
+	CG_GETUSERCMD = 0x57,
+}
+
+public static partial class SDK {
+
 }
