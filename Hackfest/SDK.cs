@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using Hackery;
 
 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 public delegate void dllEntryFunc(ReturnInfo RetInfo, DispatchTable SyscallTable, IntPtr Unknown);
@@ -94,26 +95,43 @@ public static class Colors {
 
 public static partial class SDK {
 	static DispatchTable QAGameTable, CGameTable, UITable;
+	static IntPtr quakelive_steam;
+
+	static SDK() {
+		quakelive_steam = Kernel32.GetModuleHandle("quakelive_steam.exe");
+	}
+
+	static string GetOffset(IntPtr F) {
+		return string.Format("0x{0:X} 0x{1:X}", F.ToInt32(), F.ToInt32() - quakelive_steam.ToInt32());
+	}
+
+	static void PrintNOffsets(string Title, int Num, DispatchTable D) {
+		for (int i = 0; i < Num; i++)
+			Console.WriteLine(">> {0} Func {1}: {2}", Title, i, GetOffset(D[i]));
+	}
 
 	public static void QAGameInit(DispatchTable SyscallTable) {
-		Console.WriteLine("QAGameTable: {0}", SyscallTable.DispatchTablePtr);
 		if (QAGameTable != DispatchTable.Zero)
 			return;
 		QAGameTable = SyscallTable;
+		Console.WriteLine("QAGameTable: {0}", SyscallTable.DispatchTablePtr);
+		PrintNOffsets("QAGame", 80, QAGameTable);
 	}
 
 	public static void CGameInit(DispatchTable SyscallTable) {
-		Console.WriteLine("CGameTable: {0}", SyscallTable.DispatchTablePtr);
 		if (CGameTable != DispatchTable.Zero)
 			return;
 		CGameTable = SyscallTable;
+		Console.WriteLine("CGameTable: {0}", SyscallTable.DispatchTablePtr);
+		PrintNOffsets("CGame", 80, CGameTable);
 	}
 
 	public static void UIInit(DispatchTable SyscallTable) {
-		Console.WriteLine("UITable: {0}", SyscallTable.DispatchTablePtr);
 		if (UITable != DispatchTable.Zero)
 			return;
 		UITable = SyscallTable;
+		Console.WriteLine("UITable: {0}", SyscallTable.DispatchTablePtr);
+		PrintNOffsets("UI", 80, UITable);
 	}
 
 	public static string SanitizeString(string Str) {
