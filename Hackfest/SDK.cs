@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using System.IO;
 using Hackery;
 
 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
@@ -106,8 +107,13 @@ public static partial class SDK {
 	}
 
 	static void PrintNOffsets(string Title, int Num, DispatchTable D) {
+		/*string Str = "";
+
 		for (int i = 0; i < Num; i++)
-			Console.WriteLine(">> {0} Func {1}: {2}", Title, i, GetOffset(D[i]));
+			Str += string.Format(">> {0} Func {1}: {2}\n", Title, i, GetOffset(D[i]));
+		Str += "\n\n";
+
+		File.AppendAllText("FUNCTIONS.txt", Str);*/
 	}
 
 	public static void QAGameInit(DispatchTable SyscallTable) {
@@ -115,7 +121,7 @@ public static partial class SDK {
 			return;
 		QAGameTable = SyscallTable;
 		Console.WriteLine("QAGameTable: {0}", SyscallTable.DispatchTablePtr);
-		PrintNOffsets("QAGame", 80, QAGameTable);
+		PrintNOffsets("QAGame", 100, QAGameTable);
 	}
 
 	public static void CGameInit(DispatchTable SyscallTable) {
@@ -123,7 +129,7 @@ public static partial class SDK {
 			return;
 		CGameTable = SyscallTable;
 		Console.WriteLine("CGameTable: {0}", SyscallTable.DispatchTablePtr);
-		PrintNOffsets("CGame", 80, CGameTable);
+		PrintNOffsets("CGame", 100, CGameTable);
 	}
 
 	public static void UIInit(DispatchTable SyscallTable) {
@@ -131,7 +137,7 @@ public static partial class SDK {
 			return;
 		UITable = SyscallTable;
 		Console.WriteLine("UITable: {0}", SyscallTable.DispatchTablePtr);
-		PrintNOffsets("UI", 80, UITable);
+		PrintNOffsets("UI", 100, UITable);
 	}
 
 	public static string SanitizeString(string Str) {
