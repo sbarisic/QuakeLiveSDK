@@ -386,7 +386,7 @@ public enum Syscalls : int {
 	G_PRINT = 0,
 	G_ERROR = 1,
 
-	CVAR_SET_NUM = 8,
+	CVAR_SET_NUM = 14,
 	CVAR_SET = 15,
 
 	CG_S_STARTSOUND = 0x25,

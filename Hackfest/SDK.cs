@@ -95,7 +95,7 @@ public static class Colors {
 }
 
 public static partial class SDK {
-	static DispatchTable QAGameTable, CGameTable, UITable;
+	public static DispatchTable QAGameTable, CGameTable, UITable;
 	static IntPtr quakelive_steam;
 
 	static SDK() {

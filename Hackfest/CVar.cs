@@ -9,13 +9,16 @@ using System.Runtime.InteropServices;
 public delegate void G_CVAR_VARIABLE_STRING_BUFFER_Func(string Str, StringBuilder SB, int Size);
 
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-public delegate void G_CVAR_SET_Func(string CVar, string Val);
+public delegate void FUNC_CVar_Set2_String(string CVar, string Val);
 
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-public delegate void CVAR_SET_NUM_Func(string CVar, float Val);
+public delegate void FUNC_CVar_Set2_Float(string CVar, float Val);
 
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
 public delegate int G_CVAR_VARIABLE_INTEGER_VALUE_Func(string CVar);
+
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+public delegate void TestFunc(int A = 0, int B = 0, int C = 0, int D = 0, int E = 0, int F = 0);
 
 public static partial class SDK {
 	/*public static string G_CVAR_VARIABLE_STRING_BUFFER(string Name, int BufferSize = 80) {
@@ -29,12 +32,12 @@ public static partial class SDK {
 		return QAGameTable.GetFunc<G_CVAR_VARIABLE_INTEGER_VALUE_Func>(2)(Name);
 	}*/
 
-	public static void CVAR_SET_NUM(string CVar, float Num) {
-		QAGameTable.GetFunc<CVAR_SET_NUM_Func>((int)Syscalls.CVAR_SET_NUM)(CVar, Num);
+	public static void Cvar_Set2(string CVar, float Num) {
+		QAGameTable.GetFunc<FUNC_CVar_Set2_Float>((int)Syscalls.CVAR_SET_NUM)(CVar, Num);
 	}
 
-	public static void CVAR_SET(string CVar, string Val) {
-		QAGameTable.GetFunc<G_CVAR_SET_Func>((int)Syscalls.CVAR_SET)(CVar, Val);
+	public static void Cvar_Set2(string CVar, string Str) {
+		QAGameTable.GetFunc<FUNC_CVar_Set2_String>((int)Syscalls.CVAR_SET)(CVar, Str);
 	}
 
 	/*public static void TEST() {
